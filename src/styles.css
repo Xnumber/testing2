@@ -1,3 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+
+:root {
+	/* Material Design-inspired shared color roles */
+	--md-primary: #5797cf;
+	--md-on-primary: #ffffff;
+	--md-primary-container: #d3dfff;
+	--md-on-primary-container: #304a92;
+	--md-secondary: #304a92;
+	--md-on-secondary: #ffffff;
+	--md-secondary-container: #d3dfff;
+	--md-on-secondary-container: #18345a;
+	--md-tertiary: #6750a4;
+	--md-on-tertiary: #ffffff;
+	--md-error: #ba1a1a;
+	--md-on-error: #ffffff;
+	--md-surface: #fdfcff;
+	--md-on-surface: #1a1c1e;
+	--md-surface-variant: #e1e2ec;
+	--md-on-surface-variant: #44464f;
+	--md-outline: #74777f;
+	--md-outline-variant: #c4c6d0;
+
+	/* Compatibility aliases for existing project styles */
+	--primary-color: var(--md-primary);
+	--secondary-color: var(--md-primary-container);
+	--accent-color: var(--md-secondary);
+}
+
+app-root {
+	height: 100dvh;
+	overflow: scroll;
+}
+
+
+body {
+	background: #204679;
+}

@@ -1,0 +1,83 @@
+:host {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	display: block;
+	overflow: hidden;
+	background:
+		radial-gradient(ellipse at 72% 62%, #7d2108 0, transparent 34%),
+		radial-gradient(ellipse at 30% 30%, #431407 0, transparent 39%),
+		#080503;
+	pointer-events: none;
+}
+
+
+canvas {
+	transition: 1s;
+}
+
+:host::before,
+:host::after {
+	position: absolute;
+	inset: -30%;
+	display: block;
+	content: '';
+	filter: blur(20px);
+}
+
+:host::before {
+	background:
+		radial-gradient(ellipse at 28% 40%, #a4320b 0, #5a1608 17%, transparent 39%),
+		radial-gradient(ellipse at 76% 62%, #b72e06 0, #681907 16%, transparent 42%),
+		radial-gradient(ellipse at 54% 26%, #561607 0, transparent 30%);
+	opacity: 0.72;
+	animation: lava-drift 17s ease-in-out infinite alternate;
+}
+
+:host::after {
+	background: repeating-linear-gradient(
+		132deg,
+		transparent 0 17%,
+		#6f1a06 18%,
+		#e24b0b 19%,
+		#ff8a18 19.4%,
+		#731a06 20%,
+		transparent 23% 35%
+	);
+	mask-image: radial-gradient(ellipse at 50% 50%, #000 0, transparent 65%);
+	opacity: 0.3;
+	animation: lava-cracks 22s linear infinite alternate;
+}
+
+.lava-canvas {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+@keyframes lava-drift {
+	from {
+		transform: translate3d(-3%, -2%, 0) rotate(-4deg) scale(1);
+	}
+	to {
+		transform: translate3d(4%, 3%, 0) rotate(5deg) scale(1.08);
+	}
+}
+
+@keyframes lava-cracks {
+	from {
+		transform: translate3d(-5%, 2%, 0) rotate(-7deg);
+	}
+	to {
+		transform: translate3d(5%, -2%, 0) rotate(8deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:host::before,
+	:host::after {
+		animation: none;
+	}
+}

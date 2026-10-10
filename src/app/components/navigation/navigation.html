@@ -1,0 +1,61 @@
+<div class="navigation-shell" [class.navigation-shell--collapsed]="collapsed()">
+	<div class="navigation-heading">
+		@if (!collapsed()) {
+			<span class="navigation-label">頁面導覽</span>
+		}
+		<button
+			class="navigation-toggle"
+			type="button"
+			[attr.aria-label]="collapsed() ? '展開網站導覽' : '收合網站導覽'"
+			[attr.aria-expanded]="!collapsed()"
+			(click)="toggle()"
+		>
+			<span aria-hidden="true">{{ collapsed() ? '＋' : '−' }}</span>
+		</button>
+	</div>
+
+	@if (!collapsed()) {
+		<nav class="navigation-links" aria-label="網站頁面">
+			@for (item of items; track item.path) {
+				<a
+					class="navigation-link"
+					[routerLink]="['/', item.path]"
+					routerLinkActive="navigation-link--active"
+					[routerLinkActiveOptions]="{ exact: true }"
+					ariaCurrentWhenActive="page"
+				>
+					<span class="navigation-link-indicator" aria-hidden="true"></span>
+					{{ item.label }}
+				</a>
+			}
+		</nav>
+	}
+</div>
+
+<nav class="navigation-controls" aria-label="頁面路徑切換">
+	<button
+		class="navigation-control"
+		type="button"
+		aria-label="上一個頁面"
+		[disabled]="!canNavigate(-1)"
+		(click)="navigateRoute(-1)"
+	>←</button>
+	<button
+		class="navigation-control"
+		type="button"
+		aria-label="下一個頁面"
+		[disabled]="!canNavigate(1)"
+		(click)="navigateRoute(1)"
+	>→</button>
+</nav>
+
+@if (collapsed()) {
+	<button
+		class="navigation-open-button"
+		type="button"
+		aria-label="展開網站導覽"
+		(click)="toggle()"
+	>
+		<span aria-hidden="true">＋</span>
+	</button>
+}

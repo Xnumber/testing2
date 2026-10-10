@@ -1,0 +1,107 @@
+<main class="page-shell p-3">
+	<section
+		class="explorer"
+		[class.explorer--collapsed]="sidebarCollapsed()"
+		aria-label="財務名詞互動探索區"
+	>
+		<div class="term-board">
+			<div class="board-heading">
+				<!-- <span>財務詞彙</span>
+				<span class="term-count">{{ terms.length }} TERMS</span> -->
+				@if (selectedTerm(); as term) {
+					<span class="selected-term-label" aria-live="polite">{{ term.title }}</span>
+				} @else  {
+					<span class="selected-term-label" aria-live="polite">從一個詞開始</span>
+				}
+				<button
+					class="sidebar-toggle"
+					[attr.aria-label]="sidebarCollapsed() ? '展開側邊欄' : '收合側邊欄'"
+					[attr.aria-expanded]="!sidebarCollapsed()"
+					(click)="toggleSidebar()"
+				>
+					<span aria-hidden="true">{{ sidebarCollapsed() ? '›' : '‹' }}</span>
+				</button>
+			</div>
+
+			<div class="term-cloud" aria-label="選擇一個財務名詞查看說明">
+				@for (term of terms; track term.title; let i = $index) {
+					<button
+						class="term-chip"
+						[class.term-chip--selected]="selectedTerm()?.title === term.title"
+						[attr.aria-pressed]="selectedTerm()?.title === term.title"
+						(click)="selectTerm(term)"
+					>
+						{{ term.title }}
+						<span class="chip-arrow" aria-hidden="true">↗</span>
+					</button>
+				}
+			</div>
+
+			<p class="board-hint"><span aria-hidden="true">✳</span> 選擇詞彙，探索它背後的意思</p>
+		</div>
+
+		<aside class="definition-card" aria-live="polite" aria-atomic="true">
+			@if (selectedTerm(); as term) {
+				<div class="definition-content">
+					<div class="definition-topline">
+						<span class="definition-index">詞彙解讀</span>
+						<div class="term-navigation" aria-label="切換財務詞彙">
+							<button
+								class="term-navigation-button"
+								type="button"
+								aria-label="上一個詞彙"
+								[disabled]="!canGoPrevious()"
+								(click)="moveTerm(-1)"
+							>↑</button>
+							<button
+								class="term-navigation-button"
+								type="button"
+								aria-label="下一個詞彙"
+								[disabled]="!canGoNext()"
+								(click)="moveTerm(1)"
+							>↓</button>
+						</div>
+					</div>
+					<h2>{{ term.title }}</h2>
+					<p>{{ term.description }}</p>
+					<!-- <div class="definition-footer">
+						<span>FINANCE NOTES</span>
+						<span aria-hidden="true">01 — 14</span>
+					</div> -->
+				</div>
+			} @else {
+				<div class="empty-definition">
+					<!-- <span class="detail-icon" aria-hidden="true">＋</span>
+					<p class="definition-index">你的財務小抄</p> -->
+					<div class="term-navigation" aria-label="切換財務詞彙">
+						<button
+							class="term-navigation-button"
+							type="button"
+							aria-label="上一個詞彙"
+							[disabled]="!canGoPrevious()"
+							(click)="moveTerm(-1)"
+						>↑</button>
+						<button
+							class="term-navigation-button"
+							type="button"
+							aria-label="下一個詞彙"
+							[disabled]="!canGoNext()"
+							(click)="moveTerm(1)"
+						>↓</button>
+					</div>
+					<h2>從一個詞開始。</h2>
+					<p>點選左側任一名詞，這裡會為你整理簡明解釋。</p>
+					<div class="definition-footer">
+						<!-- <span>YOUR POCKET GUIDE</span> -->
+						<!-- <span aria-hidden="true">✳</span> -->
+					</div>
+				</div>
+			}
+		</aside>
+	</section>
+
+	<!-- <footer class="page-footer">
+		<span>理解數字，讀懂企業。</span>
+		<span>FINANCE, MADE CLEAR <span aria-hidden="true">©</span> 2026</span>
+	</footer> -->
+</main>
