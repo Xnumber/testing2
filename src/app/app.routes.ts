@@ -4,9 +4,19 @@ import { Home } from './pages/home/home';
 import { Introducing } from './pages/introducing/introducing';
 import { Overview } from './pages/overview/overview';
 import { Industries } from './pages/industries/industries';
+import { IndustryDetail } from './pages/industries/industry-detail/industry-detail';
+import { industryPages } from './pages/industries/industry-pages';
 
 const waitBeforeNavigation: CanActivateFn = () =>
 	timer(0).pipe(map(() => true));
+
+const industryDetailRoutes: Routes = Object.entries(industryPages).map(([path, page]) => ({
+	path,
+	component: IndustryDetail,
+	canActivate: [waitBeforeNavigation],
+	title: page.title,
+	data: { topics: page.topics },
+}));
 
 export const routes: Routes = [
 	{
@@ -39,4 +49,5 @@ export const routes: Routes = [
 		canActivate: [waitBeforeNavigation],
 		title: '產業探索' 
 	},
+	...industryDetailRoutes,
 ];

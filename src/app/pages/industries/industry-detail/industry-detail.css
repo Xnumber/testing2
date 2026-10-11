@@ -1,0 +1,29 @@
+:host {
+	color: #20241f;
+	background: #f7f8f5;
+	font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+.page-shell {
+	height: 100dvh;
+	flex: 1;
+	min-height: 0;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.explorer {
+	display: grid;
+	height: 100%;
+	grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.8fr);
+	gap: 18px;
+	align-items: start;
+	transition: grid-template-columns 220ms ease;
+	z-index: 100;
+	position: relative;
+}
+
+.explorer--collapsed {
+	grid-template-columns: 58px minmax(0, 1fr);
+}

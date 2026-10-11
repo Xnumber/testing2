@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter, Router } from '@angular/router';
+import { routes } from '../../app.routes';
 import { Industries } from './industries';
 
 describe('Industries', () => {
@@ -8,6 +10,7 @@ describe('Industries', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Industries],
+      providers: [provideRouter(routes)],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Industries);
@@ -19,16 +22,17 @@ describe('Industries', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show sample industries and their descriptions', () => {
+  it('should show the six industries and navigate to a selected page', async () => {
     const compiled = fixture.nativeElement as HTMLElement;
 
-    expect(compiled.querySelectorAll('.term-chip').length).toBe(3);
-    expect(compiled.querySelector('.term-chip')?.textContent).toContain('半導體');
+    expect(compiled.querySelectorAll('.term-chip').length).toBe(6);
+    expect(compiled.querySelector('.term-chip')?.textContent).toContain('IC 設計');
 
     (compiled.querySelector('.term-chip') as HTMLButtonElement).click();
     fixture.detectChanges();
+    await fixture.whenStable();
 
-    expect(compiled.querySelector('.definition-card h2')?.textContent).toContain('半導體');
-    expect(compiled.querySelector('.definition-card p')?.textContent).toContain('資本支出');
+    expect(compiled.querySelector('.definition-card h2')?.textContent).toContain('IC 設計');
+    expect(TestBed.inject(Router).url).toBe('/ic-design');
   });
 });

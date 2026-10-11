@@ -1,7 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { FinancialTerm } from '../../components/financial-term';
 import { TermBoard } from '../../components/term-board/term-board';
 import { TermDefinition } from '../../components/term-definition/term-definition';
+import { industryPages } from './industry-pages';
 
 @Component({
   imports: [TermBoard, TermDefinition],
@@ -10,23 +12,13 @@ import { TermDefinition } from '../../components/term-definition/term-definition
   templateUrl: './industries.html',
 })
 export class Industries {
-  protected readonly industries: FinancialTerm[] = [
-    {
-      title: '半導體',
-      description: '產業景氣受終端需求與庫存循環影響，分析時可留意資本支出、產能利用率與產品組合。',
-    },
-    {
-      title: '電子代工',
-      description: '以規模製造與供應鏈管理為核心，營運表現常與客戶訂單、產能配置及毛利率變化相關。',
-    },
-    {
-      title: '零售通路',
-      description: '透過商品銷售與門市營運創造收入，可觀察同店營收、存貨周轉和展店效率。',
-    },
-  ];
+  protected readonly industries: FinancialTerm[] = Object.values(industryPages).map(
+    ({ title, summary }) => ({ title, description: summary }),
+  );
 
   protected readonly selectedIndustry = signal<FinancialTerm | null>(null);
   protected readonly sidebarCollapsed = signal(false);
+  private readonly router = inject(Router);
 
   protected toggleSidebar(): void {
     this.sidebarCollapsed.update((collapsed) => !collapsed);
@@ -34,6 +26,12 @@ export class Industries {
 
   protected selectIndustry(industry: FinancialTerm): void {
     this.selectedIndustry.set(industry);
+    const routePath = Object.entries(industryPages)
+      .find(([, page]) => page.title === industry.title)?.[0];
+
+    if (routePath) {
+      void this.router.navigateByUrl(`/${routePath}`);
+    }
   }
 
   protected canGoPrevious(): boolean {
