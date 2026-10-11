@@ -1,0 +1,21 @@
+<main class="page-shell p-3">
+	<section
+		class="explorer"
+		[class.explorer--collapsed]="sidebarCollapsed()"
+		aria-label="產業探索區"
+	>
+		<app-term-board
+			[terms]="industries"
+			[selectedTerm]="selectedIndustry()"
+			[collapsed]="sidebarCollapsed()"
+			(termSelected)="selectIndustry($event)"
+			(sidebarToggled)="toggleSidebar()"
+		/>
+		<app-term-definition
+			[selectedTerm]="selectedIndustry()"
+			[canGoPrevious]="canGoPrevious()"
+			[canGoNext]="canGoNext()"
+			(termMoved)="moveIndustry($event)"
+		/>
+	</section>
+</main>

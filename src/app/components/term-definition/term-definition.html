@@ -1,0 +1,49 @@
+<aside class="definition-card" aria-live="polite" aria-atomic="true">
+	@if (selectedTerm(); as term) {
+		<div class="definition-content">
+			<div class="definition-topline">
+				<span class="definition-index">詞彙解讀</span>
+				<div class="term-navigation" aria-label="切換財務詞彙">
+					<button
+						class="term-navigation-button"
+						type="button"
+						aria-label="上一個詞彙"
+						[disabled]="!canGoPrevious()"
+						(click)="termMoved.emit(-1)"
+					>↑</button>
+					<button
+						class="term-navigation-button"
+						type="button"
+						aria-label="下一個詞彙"
+						[disabled]="!canGoNext()"
+						(click)="termMoved.emit(1)"
+					>↓</button>
+				</div>
+			</div>
+			<h2>{{ term.title }}</h2>
+			<p>{{ term.description }}</p>
+		</div>
+	} @else {
+		<div class="empty-definition">
+			<div class="term-navigation" aria-label="切換財務詞彙">
+				<button
+					class="term-navigation-button"
+					type="button"
+					aria-label="上一個詞彙"
+					[disabled]="!canGoPrevious()"
+					(click)="termMoved.emit(-1)"
+				>↑</button>
+				<button
+					class="term-navigation-button"
+					type="button"
+					aria-label="下一個詞彙"
+					[disabled]="!canGoNext()"
+					(click)="termMoved.emit(1)"
+				>↓</button>
+			</div>
+			<h2>從一個詞開始。</h2>
+			<p>點選左側任一名詞，這裡會為你整理簡明解釋。</p>
+			<div class="definition-footer"></div>
+		</div>
+	}
+</aside>

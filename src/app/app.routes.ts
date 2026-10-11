@@ -3,6 +3,7 @@ import { map, timer } from 'rxjs';
 import { Home } from './pages/home/home';
 import { Introducing } from './pages/introducing/introducing';
 import { Overview } from './pages/overview/overview';
+import { Industries } from './pages/industries/industries';
 
 const waitBeforeNavigation: CanActivateFn = () =>
 	timer(0).pipe(map(() => true));
@@ -30,6 +31,12 @@ export const routes: Routes = [
 		path: 'introducing', 
 		component: Introducing, 
 		canActivate: [waitBeforeNavigation],
-		title: '相關名詞說明' 
+		title: '財務名詞' 
+	},
+	{ 
+		path: 'industries', 
+		component: Industries, 
+		canActivate: [waitBeforeNavigation],
+		title: '產業探索' 
 	},
 ];

@@ -1,0 +1,33 @@
+<div class="term-board" [class.term-board--collapsed]="collapsed()">
+	<div class="board-heading">
+		@if (selectedTerm(); as term) {
+			<span class="selected-term-label" aria-live="polite">{{ term.title }}</span>
+		} @else {
+			<span class="selected-term-label" aria-live="polite">從一個詞開始</span>
+		}
+		<button
+			class="sidebar-toggle"
+			[attr.aria-label]="collapsed() ? '展開側邊欄' : '收合側邊欄'"
+			[attr.aria-expanded]="!collapsed()"
+			(click)="sidebarToggled.emit()"
+		>
+			<span aria-hidden="true">{{ collapsed() ? '›' : '‹' }}</span>
+		</button>
+	</div>
+
+	<div class="term-cloud" aria-label="選擇一個財務名詞查看說明">
+		@for (term of terms(); track term.title) {
+			<button
+				class="term-chip"
+				[class.term-chip--selected]="selectedTerm()?.title === term.title"
+				[attr.aria-pressed]="selectedTerm()?.title === term.title"
+				(click)="termSelected.emit(term)"
+			>
+				{{ term.title }}
+				<span class="chip-arrow" aria-hidden="true">↗</span>
+			</button>
+		}
+	</div>
+
+	<p class="board-hint"><span aria-hidden="true">✳</span> 選擇詞彙，探索它背後的意思</p>
+</div>

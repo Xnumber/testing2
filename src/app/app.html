@@ -5,8 +5,11 @@
 	</a>
 	<p class="edition">財務詞彙 · 入門指南</p>
 </header> -->
-
 <app-navigation />
 <!-- <app-lava-background /> -->
-
-<router-outlet />
+@if (outlet.isActivated && outlet.activatedRoute.snapshot.title !== '首頁') {
+	<div class="p-3">
+		<h1 class="route-title" id="route-title">{{ outlet.activatedRoute.snapshot.title }}</h1>
+	</div>
+}
+<router-outlet #outlet="outlet" />

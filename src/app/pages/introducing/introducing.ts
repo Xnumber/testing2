@@ -1,12 +1,10 @@
 import { Component, signal } from '@angular/core';
-
-interface FinancialTerm {
-  title: string;
-  description: string;
-}
+import { FinancialTerm } from '../../components/financial-term';
+import { TermBoard } from '../../components/term-board/term-board';
+import { TermDefinition } from '../../components/term-definition/term-definition';
 
 @Component({
-  imports: [],
+  imports: [TermBoard, TermDefinition],
   selector: 'app-introducing',
   styleUrl: './introducing.css',
   templateUrl: './introducing.html',
