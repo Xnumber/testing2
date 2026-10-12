@@ -6,6 +6,7 @@ import { Overview } from './pages/overview/overview';
 import { Industries } from './pages/industries/industries';
 import { IndustryDetail } from './pages/industries/industry-detail/industry-detail';
 import { industryPages } from './pages/industries/industry-pages';
+import { FinancialReports } from './pages/financial-reports/financial-reports';
 
 const waitBeforeNavigation: CanActivateFn = () =>
 	timer(0).pipe(map(() => true));
@@ -31,12 +32,6 @@ export const routes: Routes = [
 		canActivate: [waitBeforeNavigation],
 		title: '首頁'
 	},
-	{
-		path: 'overview',
-		component: Overview,
-		canActivate: [waitBeforeNavigation],
-		title: '總覽',
-	},
 	{ 
 		path: 'introducing', 
 		component: Introducing, 
@@ -47,7 +42,19 @@ export const routes: Routes = [
 		path: 'industries', 
 		component: Industries, 
 		canActivate: [waitBeforeNavigation],
-		title: '產業探索' 
+		title: '產業簡介' 
 	},
-	...industryDetailRoutes,
+	{
+		path: 'financial-reports',
+		component: FinancialReports,
+		canActivate: [waitBeforeNavigation],
+		title: '財報解讀',
+	},
+	{
+		path: 'overview',
+		component: Overview,
+		canActivate: [waitBeforeNavigation],
+		title: '參考',
+	}
+	// ...industryDetailRoutes,
 ];

@@ -39,3 +39,69 @@ app-root {
 body {
 	background: #204679;
 }
+
+/* Shared layout for the term explorer pages */
+app-introducing,
+app-industries,
+app-financial-reports {
+	color: #20241f;
+	background: #f7f8f5;
+	font-family: Inter, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+}
+
+.page-shell {
+	height: 100dvh;
+	--ink: #20241f;
+	--muted: #858a80;
+	--line: #e6e9e2;
+	flex: 1;
+	min-height: 0;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.explorer {
+	display: grid;
+	height: 100%;
+	grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.8fr);
+	gap: 10px;
+	align-items: start;
+	transition: grid-template-columns 220ms ease;
+	z-index: 100;
+	position: relative;
+}
+
+.explorer--collapsed {
+	grid-template-columns: 58px minmax(0, 1fr);
+}
+
+@media (max-width: 760px) {
+	.explorer,
+	.explorer--collapsed {
+		display: flex;
+		flex-direction: column;
+		height: auto;
+		gap: 12px;
+	}
+
+
+	.explorer > *{
+		width: 100%;
+	}
+
+	.page-shell .subtitle {
+		margin-top: 83px;
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-bottom: 16px;
+		color: var(--md-on-primary);
+	}
+}
+
+.page-shell .subtitle {
+	font-size: 1.25rem;
+	font-weight: 600;
+	margin-bottom: 16px;
+	color: var(--md-on-primary);
+}

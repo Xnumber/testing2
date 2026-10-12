@@ -38,10 +38,11 @@ describe('Navigation', () => {
 
     const links = fixture.nativeElement.querySelectorAll('.navigation-link');
 
-    expect(links.length).toBe(3);
+    expect(links.length).toBe(5);
     expect(fixture.nativeElement.textContent).toContain('首頁');
-    expect(fixture.nativeElement.textContent).toContain('相關名詞說明');
+    expect(fixture.nativeElement.textContent).toContain('財務名詞');
     expect(fixture.nativeElement.textContent).toContain('總覽');
+    expect(fixture.nativeElement.textContent).toContain('財報解讀');
   });
 
   it('should collapse and expand the route links', () => {
@@ -51,7 +52,7 @@ describe('Navigation', () => {
     expect(openButton).toBeTruthy();
     openButton.click();
     fixture.detectChanges();
-    expect(fixture.nativeElement.querySelectorAll('.navigation-link').length).toBe(3);
+    expect(fixture.nativeElement.querySelectorAll('.navigation-link').length).toBe(5);
     expect(fixture.nativeElement.querySelector('.navigation-open-button')).toBeNull();
 
     const toggle = fixture.nativeElement.querySelector('.navigation-toggle') as HTMLButtonElement;
@@ -69,7 +70,7 @@ describe('Navigation', () => {
     fixture = TestBed.createComponent(Navigation);
     fixture.detectChanges();
 
-    expect(fixture.nativeElement.querySelectorAll('.navigation-link').length).toBe(3);
+    expect(fixture.nativeElement.querySelectorAll('.navigation-link').length).toBe(5);
     expect(fixture.nativeElement.querySelector('.navigation-open-button')).toBeNull();
   });
 

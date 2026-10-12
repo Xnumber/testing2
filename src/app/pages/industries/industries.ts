@@ -1,24 +1,26 @@
-import { Component, inject, signal } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, computed, signal } from '@angular/core';
 import { FinancialTerm } from '../../components/financial-term';
 import { TermBoard } from '../../components/term-board/term-board';
-import { TermDefinition } from '../../components/term-definition/term-definition';
+import { TermDefinitionList } from '../../components/term-definition-list/term-definition-list';
 import { industryPages } from './industry-pages';
 
 @Component({
-  imports: [TermBoard, TermDefinition],
+  imports: [TermBoard, TermDefinitionList],
   selector: 'app-industries',
   styleUrl: './industries.css',
   templateUrl: './industries.html',
 })
 export class Industries {
   protected readonly industries: FinancialTerm[] = Object.values(industryPages).map(
-    ({ title, summary }) => ({ title, description: summary }),
+    ({ title, summary }) => ({ title, description: summary[0]?.description ?? '' }),
   );
 
   protected readonly selectedIndustry = signal<FinancialTerm | null>(null);
+  protected readonly selectedSummary = computed(() => {
+    const selectedTitle = this.selectedIndustry()?.title;
+    return Object.values(industryPages).find((page) => page.title === selectedTitle)?.summary ?? [];
+  });
   protected readonly sidebarCollapsed = signal(false);
-  private readonly router = inject(Router);
 
   protected toggleSidebar(): void {
     this.sidebarCollapsed.update((collapsed) => !collapsed);
@@ -26,12 +28,6 @@ export class Industries {
 
   protected selectIndustry(industry: FinancialTerm): void {
     this.selectedIndustry.set(industry);
-    const routePath = Object.entries(industryPages)
-      .find(([, page]) => page.title === industry.title)?.[0];
-
-    if (routePath) {
-      void this.router.navigateByUrl(`/${routePath}`);
-    }
   }
 
   protected canGoPrevious(): boolean {

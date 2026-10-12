@@ -1,0 +1,30 @@
+<main class="page-shell p-3">
+	<section
+		class="explorer"
+		[class.explorer--collapsed]="sidebarCollapsed()"
+		aria-label="財報解讀區"
+	>
+		<app-term-board
+			[terms]="sections"
+			[selectedTerm]="selectedSection()"
+			[collapsed]="sidebarCollapsed()"
+			(termSelected)="selectSection($event)"
+			(sidebarToggled)="toggleSidebar()"
+		/>
+		<div>
+			<h2 class="subtitle">
+				{{ selectedSection()?.title ?? "選擇一個項目" }}
+			</h2>
+			<app-term-definition-list
+				[terms]="selectedTerms()"
+				[canGoPrevious]="canGoPrevious()"
+				[canGoNext]="canGoNext()"
+				[heading]="'財報重點'"
+				[navigationLabel]="'財報分類'"
+				[emptyTitle]="'從一個分類開始。'"
+				[emptyDescription]="'點選左側任一分類，這裡會顯示對應內容。'"
+				(termMoved)="moveSection($event)"
+			/>
+		</div>
+	</section>
+</main>

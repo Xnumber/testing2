@@ -52,10 +52,10 @@
 	width: 50px;
 	height: 50px;
 	place-items: center;
-	border: 1px solid #d2deea;
+	border: 1px solid #e2e7de;
 	border-radius: 5px;
-	background: #adadad;
-	color: #237bff;
+	background: var(--md-primary);
+	color: var(--md-on-primary);
 	cursor: pointer;
 	font-weight: bold;
 	font: inherit;
@@ -65,14 +65,13 @@
 
 .term-navigation-button:hover:not(:disabled),
 .term-navigation-button:focus-visible:not(:disabled) {
-	border-color: #8eaac4;
-	background: #5797cf;
-	color: #ffffff;
+	border-color: var(--md-primary-container);
+	background: var(--md-primary-container);
+	color: var(--md-on-primary-container);
 	outline: none;
 }
 
 .term-navigation-button:disabled {
-	color: #c3e2ff;
 	cursor: not-allowed;
 	opacity: 0.55;
 }

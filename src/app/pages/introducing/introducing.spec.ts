@@ -19,25 +19,24 @@ describe('Introducing', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render all financial terms', () => {
-    const terms = fixture.nativeElement.querySelectorAll('.term-chip');
+  it('should render all term categories', () => {
+    const categories = fixture.nativeElement.querySelectorAll('.term-chip');
 
-    expect(terms.length).toBe(14);
+    expect(categories.length).toBe(4);
   });
 
-  it('should show a term explanation when a term is selected', () => {
-    const firstTerm = fixture.nativeElement.querySelector('.term-chip') as HTMLButtonElement;
+  it('should show the category terms when a category is selected', () => {
+    const firstCategory = fixture.nativeElement.querySelector('.term-chip') as HTMLButtonElement;
 
-    firstTerm.click();
+    firstCategory.click();
     fixture.detectChanges();
 
+    expect(fixture.nativeElement.querySelector('.selected-term-label')?.textContent).toContain('獲利能力');
+    expect(fixture.nativeElement.querySelectorAll('.definition-entry').length).toBe(3);
     expect(fixture.nativeElement.querySelector('.definition-card h2')?.textContent).toContain('ROA');
-    expect(fixture.nativeElement.querySelector('.selected-term-label')?.textContent).toContain('ROA');
-    expect(fixture.nativeElement.querySelector('.definition-card p:not(.definition-index)')?.textContent)
-      .toContain('資產報酬率');
   });
 
-  it('should collapse and expand the financial terms sidebar', () => {
+  it('should collapse and expand the sidebar', () => {
     const toggle = fixture.nativeElement.querySelector('.sidebar-toggle') as HTMLButtonElement;
     const explorer = fixture.nativeElement.querySelector('.explorer') as HTMLElement;
 
@@ -50,19 +49,5 @@ describe('Introducing', () => {
     fixture.detectChanges();
     expect(explorer.classList).not.toContain('explorer--collapsed');
     expect(toggle.getAttribute('aria-label')).toBe('收合側邊欄');
-  });
-
-  it('should navigate between terms without opening the sidebar', () => {
-    (fixture.nativeElement.querySelector('[aria-label="下一個詞彙"]') as HTMLButtonElement).click();
-    fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.definition-card h2')?.textContent).toContain('ROA');
-
-    (fixture.nativeElement.querySelector('[aria-label="下一個詞彙"]') as HTMLButtonElement).click();
-    fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.definition-card h2')?.textContent).toContain('ROE');
-
-    (fixture.nativeElement.querySelector('[aria-label="上一個詞彙"]') as HTMLButtonElement).click();
-    fixture.detectChanges();
-    expect(fixture.nativeElement.querySelector('.definition-card h2')?.textContent).toContain('ROA');
   });
 });

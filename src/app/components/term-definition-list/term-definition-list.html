@@ -1,0 +1,36 @@
+<aside class="definition-card" aria-live="polite" aria-atomic="true">
+	<div class="definition-topline">
+		<span class="definition-index">{{ heading() }}</span>
+		<div class="term-navigation" [attr.aria-label]="'切換' + navigationLabel()">
+			<button
+				class="term-navigation-button"
+				type="button"
+				[attr.aria-label]="'上一個' + navigationLabel()"
+				[disabled]="!canGoPrevious()"
+				(click)="termMoved.emit(-1)"
+			>↑</button>
+			<button
+				class="term-navigation-button"
+				type="button"
+				[attr.aria-label]="'下一個' + navigationLabel()"
+				[disabled]="!canGoNext()"
+				(click)="termMoved.emit(1)"
+			>↓</button>
+		</div>
+	</div>
+	@if (terms().length) {
+		<div class="definition-list">
+			@for (term of terms(); track term.title) {
+				<article class="definition-entry">
+					<h2>{{ term.title }}</h2>
+					<p>{{ term.description }}</p>
+				</article>
+			}
+		</div>
+	} @else {
+		<div class="empty-definition">
+			<h2>{{ emptyTitle() }}</h2>
+			<p>{{ emptyDescription() }}</p>
+		</div>
+	}
+</aside>

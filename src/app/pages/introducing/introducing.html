@@ -1,26 +1,26 @@
-	<main class="page-shell p-3">
-		<section
+<main class="page-shell p-3">
+	<section
 		class="explorer"
 		[class.explorer--collapsed]="sidebarCollapsed()"
 		aria-label="財務名詞互動探索區"
 	>
 		<app-term-board
-			[terms]="terms"
-			[selectedTerm]="selectedTerm()"
+			[terms]="categories"
+			[selectedTerm]="selectedCategory()"
 			[collapsed]="sidebarCollapsed()"
-			(termSelected)="selectTerm($event)"
+			(termSelected)="selectCategory($event)"
 			(sidebarToggled)="toggleSidebar()"
 		/>
-		<app-term-definition
-			[selectedTerm]="selectedTerm()"
-			[canGoPrevious]="canGoPrevious()"
-			[canGoNext]="canGoNext()"
-			(termMoved)="moveTerm($event)"
-		/>
+		<div>
+			<h2 class="subtitle">
+				{{ selectedCategory()?.title ?? "選擇一個項目" }}
+			</h2>
+			<app-term-definition-list
+				[terms]="selectedTerms()"
+				[canGoPrevious]="canGoPrevious()"
+				[canGoNext]="canGoNext()"
+				(termMoved)="moveCategory($event)"
+			/>
+		</div>
 	</section>
-
-	<!-- <footer class="page-footer">
-		<span>理解數字，讀懂企業。</span>
-		<span>FINANCE, MADE CLEAR <span aria-hidden="true">©</span> 2026</span>
-	</footer> -->
 </main>
