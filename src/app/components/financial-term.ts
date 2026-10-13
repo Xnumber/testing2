@@ -1,4 +1,4 @@
 export interface FinancialTerm {
 	title: string;
-	description: string;
+	description: string | string[];
 }

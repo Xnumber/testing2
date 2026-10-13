@@ -15,4 +15,8 @@ export class TermDefinitionList {
 	readonly emptyTitle = input('從一個項目開始。');
 	readonly emptyDescription = input('點選左側任一項目，這裡會顯示對應內容。');
 	readonly termMoved = output<-1 | 1>();
+
+	protected descriptionLines(description: FinancialTerm['description']): string[] {
+		return Array.isArray(description) ? description : [description];
+	}
 }

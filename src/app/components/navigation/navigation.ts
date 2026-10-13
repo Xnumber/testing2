@@ -26,7 +26,7 @@ export class Navigation {
       label: route.title as string,
       path: route.path as string,
     }));
-  protected readonly collapsed = signal(false);
+  protected readonly collapsed = signal(true);
   private readonly router = inject(Router);
   private readonly platformId = inject(PLATFORM_ID);
   protected readonly currentRouteIndex = toSignal(
@@ -40,7 +40,8 @@ export class Navigation {
 
   constructor() {
     if (isPlatformBrowser(this.platformId)) {
-      this.collapsed.set(window.innerWidth <= 760);
+      // alert(window.innerWidth);
+      // this.collapsed.set(window.innerWidth <= 760);
     }
   }
 

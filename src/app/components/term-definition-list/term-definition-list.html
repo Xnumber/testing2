@@ -23,7 +23,11 @@
 			@for (term of terms(); track term.title) {
 				<article class="definition-entry">
 					<h2>{{ term.title }}</h2>
-					<p>{{ term.description }}</p>
+					<p>
+						@for (line of descriptionLines(term.description); track $index) {
+							<span>{{ line }}</span>@if (!$last) {<br />}
+						}
+					</p>
 				</article>
 			}
 		</div>

@@ -1,0 +1,17 @@
+<main class="page-shell p-3">
+	<section
+		class="explorer"
+		[class.explorer--collapsed]="sidebarCollapsed()"
+		aria-label="綜合比較互動區"
+	>
+		<app-term-board
+			[terms]="terms"
+			[collapsed]="sidebarCollapsed()"
+			(sidebarToggled)="toggleSidebar()"
+		/>
+		<div>
+			<h2 class="subtitle">綜合比較</h2>
+			<app-term-definition-list [terms]="terms" />
+		</div>
+	</section>
+</main>

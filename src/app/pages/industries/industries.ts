@@ -12,7 +12,7 @@ import { industryPages } from './industry-pages';
 })
 export class Industries {
   protected readonly industries: FinancialTerm[] = Object.values(industryPages).map(
-    ({ title, summary }) => ({ title, description: summary[0]?.description ?? '' }),
+    ({ title, summary }) => ({ title, description: summary[0]?.description[0] ?? '' }),
   );
 
   protected readonly selectedIndustry = signal<FinancialTerm | null>(null);

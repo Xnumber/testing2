@@ -7,6 +7,7 @@ import { Industries } from './pages/industries/industries';
 import { IndustryDetail } from './pages/industries/industry-detail/industry-detail';
 import { industryPages } from './pages/industries/industry-pages';
 import { FinancialReports } from './pages/financial-reports/financial-reports';
+import { ComprehensiveComparison } from './pages/comprehensive-comparison/comprehensive-comparison';
 
 const waitBeforeNavigation: CanActivateFn = () =>
 	timer(0).pipe(map(() => true));
@@ -49,6 +50,12 @@ export const routes: Routes = [
 		component: FinancialReports,
 		canActivate: [waitBeforeNavigation],
 		title: '財報解讀',
+	},
+	{
+		path: 'comprehensive-comparison',
+		component: ComprehensiveComparison,
+		canActivate: [waitBeforeNavigation],
+		title: '綜合解讀'
 	},
 	{
 		path: 'overview',
