@@ -113,17 +113,15 @@ export const industryPages: Record<string, IndustryPageData> = {
 					'存貨金額及比重高 (2019 全國電子: 61%)',
 					'使用權資產及租賃負債金額驚人',
 					'流動比率高低依產業而定 (香水、LVMH、鞋，存貨週轉天數不同)',
-					'負債比率高低依商業模式而定'
+					'負債比率高低依商業模式而定 (加盟店、直營店差異，租金資本化。)'
 				]
 			},
 			{
 				title: '損益表', 
 				description: [
 					'毛利率穩定',
-					'穩定推銷費用率',
-					'很低的營益率',
-					'投資利益大',
-					'稅後淨利率不高但獲利驚人'
+					'穩定推銷費用率 (銷售人員、賣場裝潢)',
+					'很低的營益率 (台灣高競爭、管理財。)'
 				]
 			}
 		],
@@ -131,6 +129,34 @@ export const industryPages: Record<string, IndustryPageData> = {
 	},
 
 	'chain-restaurants': {
+		title: '連鎖餐飲',
+		summary: [
+			{
+				title: '直營', 
+				description: [
+					'收入、租金、人事成本都屬連鎖事業',
+					'瓦城、王品、安心'
+				]
+			},
+			{
+				title: '加盟', 
+				description: [
+					'收入主要來自出售食材給加盟者',
+					'八方雲集、飲品連鎖'
+				]
+			},			
+			{
+				title: '兼採直營店及加盟店模式 P100', 
+				description: [
+					'85度c'
+				]
+			},			
+		],
+		topics: [
+			
+		],
+	},
+	'chain-restaurants-direct': {
 		title: '連鎖餐飲 - 直營店',
 		summary: [
 			{
