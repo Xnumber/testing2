@@ -217,7 +217,7 @@ export const industryPages: Record<string, IndustryPageData> = {
 		title: '生技醫療 - 藥品研發',
 		summary: [
 			{
-				title: '看現今還能稍多久', 
+				title: '看現金還能燒多久', 
 				description: [
 					'看現金與約當現金多寡',
 					'可變現金融資產'
@@ -263,7 +263,7 @@ export const industryPages: Record<string, IndustryPageData> = {
 			{
 				title: '損益表', 
 				description: [
-					'推銷非用率較低',
+					'推銷費用率較低',
 					'若發展自有品牌，毛利率和推銷率較高'
 				]
 			}

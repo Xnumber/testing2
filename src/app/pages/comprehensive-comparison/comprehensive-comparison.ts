@@ -9,8 +9,16 @@ import { TermDefinitionList } from '../../components/term-definition-list/term-d
   templateUrl: './comprehensive-comparison.html',
 })
 export class ComprehensiveComparison {
-  protected readonly terms: FinancialTerm[] = [];
-  protected readonly sidebarCollapsed = signal(false);
+  protected readonly terms: FinancialTerm[] = [
+    {
+      title: '思考',
+      description: [ 
+        '產業特徵影響了財務上的表現',
+        '財務上的表現也會反映產業特徵'
+      ]
+    }
+  ];
+  protected readonly sidebarCollapsed = signal(true);
 
   protected toggleSidebar(): void {
     this.sidebarCollapsed.update((collapsed) => !collapsed);

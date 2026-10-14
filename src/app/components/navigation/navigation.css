@@ -160,7 +160,7 @@
 	border: 1px solid transparent;
 	border-radius: 5px;
 	color: #5f7182;
-	font-size: 12px;
+	font-size: 20px;
 	text-decoration: none;
 	transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }

@@ -6,31 +6,41 @@ export interface IntroducingPageData {
 }
 
 export const introducingPages: Record<string, IntroducingPageData> = {
+	// profitability: {
+	// 	title: '毛利率',
+	// 	summary: [
+	// 		{ title: '毛利率', description: '毛利佔營收的比例，反映企業在扣除直接成本後的獲利能力。' },
+	// 		{
+	// 			title: '營業利益率', description: '營業利益=營業收入-營業成本-營業費用，營業利益率=營業利益/營業收入' },
+	// 		{ title: '推銷費用率', description: '推銷費用占營收的比例，可觀察企業為促成銷售投入的成本及其變化，並需搭配營收成長與產業特性判讀。' },
+	// 		{ title: 'ROA', description: '資產報酬率，衡量企業運用全部資產創造獲利的能力。通常以稅後淨利除以平均總資產計算。' },
+	// 		{ title: 'ROE', description: '股東權益報酬率，呈現股東投入的權益資本為企業帶來多少獲利。常以稅後淨利除以平均股東權益計算。' },
+	// 		{ title: 'ROIC', description: '投入資本報酬率，衡量企業運用營運所需資本創造報酬的效率，有助於評估本業投資的成果。' },
+	// 	],
+	// },
 	profitability: {
 		title: '獲利能力',
 		summary: [
-			{ title: '毛利率', description: '毛利佔營收的比例，反映企業在扣除直接成本後的獲利能力。' },
-			{
-				title: '營業利益率', description: '營業利益=營業收入-營業成本-營業費用，營業利益率=營業利益/營業收入' },
-			{ title: '推銷費用率', description: '推銷費用占營收的比例，可觀察企業為促成銷售投入的成本及其變化，並需搭配營收成長與產業特性判讀。' },
-			{ title: 'ROA', description: '資產報酬率，衡量企業運用全部資產創造獲利的能力。通常以稅後淨利除以平均總資產計算。' },
-			{ title: 'ROE', description: '股東權益報酬率，呈現股東投入的權益資本為企業帶來多少獲利。常以稅後淨利除以平均股東權益計算。' },
-			{ title: 'ROIC', description: '投入資本報酬率，衡量企業運用營運所需資本創造報酬的效率，有助於評估本業投資的成果。' },
+			{ title: '毛利率', description: '營業收入 - 營業成本 / 營業收入。毛利佔營收的比例。' },
+			{ title: '營業利益率', description: '營業利益 = 營業收入 - 營業成本 - 營業費用，營業利益率=營業利益/營業收入' },
+			// { title: '推銷費用率', description: '推銷費用占營業收入的比例' },
+			{ title: 'ROA', description: '資產報酬率，稅後淨利/平均總資產。' },
+			{ title: 'ROE', description: '股東權益報酬率，稅後淨利/平均股東權益計算' }
 		],
 	},
 	'financial-structure': {
 		title: '財務結構與償債能力',
 		summary: [
-			{ title: '負債比率', description: '呈現企業負債相對於資產或權益的程度；解讀時需留意採用的公式與產業特性。' },
-			{ title: '股東權益', description: '企業資產扣除負債後歸屬股東的剩餘權益，也稱為淨值。' },
-			{ title: '流動比率', description: '流動資產除以流動負債，用來評估企業以短期資產償還短期債務的能力。' },
+			{ title: '負債比率', description: '總負債/總資產' },
+			{ title: '股東權益', description: '淨值。' },
+			{ title: '流動比率', description: '流動資產/流動負債。' },
 		],
 	},
 	efficiency: {
 		title: '營運效率',
 		summary: [
-			{ title: '應收帳款周轉天數', description: '估算企業平均需要多少天收回應收帳款。天數較短通常代表收款較快，但也需配合授信政策判讀。' },
-			{ title: '存貨周轉天數', description: '估算存貨平均在庫多少天才售出。天數變化可能反映銷售速度、備貨策略或存貨管理狀況。' },
+			{ title: '應收帳款周轉天數', description: '營業收入/平均應收帳款餘額' },
+			{ title: '存貨周轉天數', description: '平均存貨/銷貨成本。估算存貨平均在庫多少天才售出。' },
 		],
 	},
 	// 'statements-and-items': {

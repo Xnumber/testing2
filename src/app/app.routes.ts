@@ -45,17 +45,17 @@ export const routes: Routes = [
 		canActivate: [waitBeforeNavigation],
 		title: '產業簡介' 
 	},
-	{
-		path: 'financial-reports',
-		component: FinancialReports,
-		canActivate: [waitBeforeNavigation],
-		title: '財報解讀',
-	},
+	// {
+	// 	path: 'financial-reports',
+	// 	component: FinancialReports,
+	// 	canActivate: [waitBeforeNavigation],
+	// 	title: '財報解讀',
+	// },
 	{
 		path: 'comprehensive-comparison',
 		component: ComprehensiveComparison,
 		canActivate: [waitBeforeNavigation],
-		title: '綜合解讀'
+		title: '思考'
 	},
 	{
 		path: 'overview',

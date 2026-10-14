@@ -20,7 +20,7 @@ export class Introducing {
     const selectedTitle = this.selectedCategory()?.title;
     return Object.values(introducingPages).find((page) => page.title === selectedTitle)?.summary ?? [];
   });
-  protected readonly sidebarCollapsed = signal(false);
+  protected readonly sidebarCollapsed = signal(true);
 
   protected toggleSidebar(): void {
     this.sidebarCollapsed.update((collapsed) => !collapsed);
